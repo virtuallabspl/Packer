@@ -1,0 +1,67 @@
+{
+ 
+  "builders": [
+    {
+      "communicator": "winrm",
+      "convert_to_template": "false",
+      "datastore": "{{user `vmware_datastore`}}",
+      "datacenter": "{{user `vmware_datacenter`}}",
+      "cluster": "{{user `vmware_cluster`}}",
+      "folder":"{{user `vmware_folder`}}",
+      "disk_controller_type": "lsilogic-sas",
+      "remove_cdrom": "true",
+      "floppy_files": [
+        "Autounattend.xml",
+        "script\\EnvConfigure.ps1",
+        "script\\Config_WinRM.ps1",
+        "script\\Install_Modules.ps1"
+      ],
+      "guest_os_type": "windows9_64Guest",
+      "insecure_connection": "true",
+      "iso_paths": [
+        "[Kingston] IsoSSD/Windows10pro.iso",
+        "[] /vmimages/tools-isoimages/windows.iso"
+      ],
+      "network_adapters": [
+        {
+          "network": "VM Network",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "password": "{{user `personal_passwd`}}",
+      "cpus": "{{user `vmware_cpus`}}",
+      "ram": "{{user `vmware_ram`}}",
+      "storage": [
+        {
+          "disk_size": "40000",
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "{{user `vmware_account`}}",
+      "vcenter_server": "{{user `vmware_vcenter`}}",
+      "vm_name": "{{user `vmware_Name`}}",
+      "winrm_password": "{{user `personal_passwd`}}",
+      "winrm_username": "virtuallabspl",
+      "winrm_use_ssl": "false",
+      "winrm_insecure": "true",
+      "shutdown_timeout": "1h",
+      "shutdown_command": "shutdown /s /t 60 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "boot_wait": "6m",
+      "boot_command": [
+      "<down><wait1s>",
+      "<down><wait1s>",
+      "<enter><wait>"]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+       "scripts": [
+        "script/EnvConfigure.ps1",
+        "script/Install_Modules.ps1"   
+      ]
+    } 
+  ]
+}
+

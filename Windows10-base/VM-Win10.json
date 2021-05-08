@@ -1,0 +1,64 @@
+{
+  "builders": [
+    {
+      "communicator": "winrm",
+      "convert_to_template": "false",
+      "cpus": "2",
+      "datastore": "Kingston",
+      "datacenter": "DCMyLab",
+      "cluster": "KlasterLab1",
+      "folder":"OSTemplate/Windows",
+      "disk_controller_type": "lsilogic-sas",
+      "floppy_files": [
+        "Autounattend.xml",
+        "script\\Config_WinRM.ps1",
+        "script\\EnvConfigure.ps1"
+
+      ],
+      "guest_os_type": "windows9_64Guest",
+      "insecure_connection": "true",
+      "iso_paths": [
+        "[Kingston] IsoSSD/Windows10pro.iso",
+        "[] /vmimages/tools-isoimages/windows.iso"
+      ],
+      "network_adapters": [
+        {
+          "network": "VM Network",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "password": "Start123!",
+      "ram": "8192",
+      "storage": [
+        {
+          "disk_size": "40000",
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "srv_packer@vsphere.local",
+      "vcenter_server": "vcenter",
+      "vm_name": "W10_TemplateBase",
+      "winrm_password": "Start123!",
+      "winrm_username": "virtuallabspl",
+      "winrm_use_ssl": "false",
+      "winrm_insecure": "true",
+      "shutdown_timeout": "1h",
+      "shutdown_command": "shutdown /s /t 60 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "boot_wait": "6m",
+      "boot_command": [
+      "<down><wait1s>",
+      "<down><wait1s>",
+      "<enter><wait>"]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+       "scripts": [
+        "script/EnvConfigure.ps1"
+      ]
+    } 
+  ]
+}
+

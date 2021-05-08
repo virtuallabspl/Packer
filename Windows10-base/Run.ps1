@@ -1,0 +1,1 @@
+packer build -force ".\VM-Win10.json"

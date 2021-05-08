@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="windowsPE">
+        <component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <InputLocale>en-US</InputLocale>
+            <SystemLocale>en-US</SystemLocale>
+            <UILanguage>en-US</UILanguage>
+            <UserLocale>en-US</UserLocale>
+        </component>
+        <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DiskConfiguration>
+                <Disk wcm:action="add">
+                    <CreatePartitions>
+                        <CreatePartition wcm:action="add">
+                            <Order>1</Order>
+                            <Size>200</Size>
+                            <Type>Primary</Type>
+                        </CreatePartition>
+                        <CreatePartition wcm:action="add">
+                            <Extend>true</Extend>
+                            <Order>2</Order>
+                            <Type>Primary</Type>
+                        </CreatePartition>
+                    </CreatePartitions>
+                    <ModifyPartitions>
+                        <ModifyPartition wcm:action="add">
+                            <Active>true</Active>
+                            <Format>NTFS</Format>
+                            <Label>System</Label>
+                            <Order>1</Order>
+                            <PartitionID>1</PartitionID>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Format>NTFS</Format>
+                            <Order>2</Order>
+                            <PartitionID>2</PartitionID>
+                            <Label>WindowsOS</Label>
+                        </ModifyPartition>
+                    </ModifyPartitions>
+                    <DiskID>0</DiskID>
+                    <WillWipeDisk>true</WillWipeDisk>
+                </Disk>
+            </DiskConfiguration>
+            <ImageInstall>
+                <OSImage>
+                    <InstallTo>
+                        <DiskID>0</DiskID>
+                        <PartitionID>2</PartitionID>
+                    </InstallTo>
+                </OSImage>
+            </ImageInstall>
+            <UserData>
+                <ProductKey>
+                <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+                <WillShowUI>Never</WillShowUI>
+                </ProductKey>
+                <AcceptEula>true</AcceptEula>
+                <FullName>virtuallabspl</FullName>
+                <Organization>virtuallabspl</Organization>
+            </UserData>
+            <EnableFirewall>false</EnableFirewall>
+        </component>
+    </settings>
+    <settings pass="specialize">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ComputerName>Packer</ComputerName>
+        </component>
+    </settings>
+    <settings pass="oobeSystem">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <OOBE>
+                <ProtectYourPC>3</ProtectYourPC>
+                <HideEULAPage>true</HideEULAPage>
+                <HideLocalAccountScreen>true</HideLocalAccountScreen>
+                <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+            </OOBE>
+            <UserAccounts>
+                <AdministratorPassword>
+                    <Value>QQBkAG0AaQBuAGkAcwB0AHIAYQB0AG8AcgBQAGEAcwBzAHcAbwByAGQA</Value>
+                    <PlainText>false</PlainText>
+                </AdministratorPassword>
+                <LocalAccounts>
+                    <LocalAccount wcm:action="add">
+                        <Password>
+                            <Value>UwB0AGEAcgB0ADEAMgAzACEAUABhAHMAcwB3AG8AcgBkAA==</Value>
+                            <PlainText>false</PlainText>
+                        </Password>
+                        <DisplayName>virtuallabspl</DisplayName>
+                        <Name>virtuallabspl</Name>
+                        <Group>Administrators</Group>
+                    </LocalAccount>
+                </LocalAccounts>
+            </UserAccounts>
+            <AutoLogon>
+                <Password>
+                    <Value>UwB0AGEAcgB0ADEAMgAzACEAUABhAHMAcwB3AG8AcgBkAA==</Value>
+                    <PlainText>false</PlainText>
+                </Password>
+                <LogonCount>2</LogonCount>
+                <Enabled>true</Enabled>
+                <Username>virtuallabspl</Username>
+            </AutoLogon>
+            <TimeZone>Central European Standard Time</TimeZone>
+            <FirstLogonCommands>
+  <SynchronousCommand wcm:action="add">
+    <Order>1</Order>
+    <CommandLine>e:\setup64.exe /S /v"/qn REBOOT=R</CommandLine>
+  </SynchronousCommand>
+    <SynchronousCommand wcm:action="add">
+    <Order>2</Order>
+    <CommandLine>powershell.exe Set-ExecutionPolicy Unrestricted -force</CommandLine>
+  </SynchronousCommand>              
+  <SynchronousCommand wcm:action="add">
+    <Order>3</Order>
+    <CommandLine>powershell -ExecutionPolicy Bypass -File a:\Config_WinRM.ps1</CommandLine>
+  </SynchronousCommand>
+   </FirstLogonCommands> 
+         </component>
+    </settings>
+    <cpi:offlineImage cpi:source="wim://pc/iso/windowsadk/windows10/install.wim#Windows 10 Pro Technical Preview" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+</unattend>

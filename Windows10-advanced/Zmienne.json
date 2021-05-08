@@ -1,0 +1,13 @@
+{
+    "vmware_Name":"Win10_TemplateAdv",
+    "vmware_vcenter":"vcenter",
+    "vmware_datastore": "Kingston",
+    "vmware_datacenter": "DCMyLab",
+    "vmware_cluster": "KlasterLab1",
+    "vmware_folder": "OSTemplate/Windows",
+    "vmware_ram": "8192",
+    "vmware_cpus": "2",
+    "vmware_account": "srv_packer@vsphere.local",
+    "personal_passwd": "Start123!"
+    
+}
