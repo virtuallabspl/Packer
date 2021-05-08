@@ -1,7 +1,7 @@
 # Maintener
 Tomasz Gładkowski
 <br>
-virtuallabs.pl
+https://virtuallabs.pl
 <br>
 virtuallabs@gmail.com
 <br>
