@@ -13,12 +13,11 @@
         "Autounattend.xml",
         "script\\Config_WinRM.ps1",
         "script\\EnvConfigure.ps1"
-
       ],
       "guest_os_type": "windows9_64Guest",
       "insecure_connection": "true",
       "iso_paths": [
-        "[Kingston] IsoSSD/Windows10pro.iso",
+        "[Kingston] IsoSSD/Win10/Windows10MC.iso",
         "[] /vmimages/tools-isoimages/windows.iso"
       ],
       "network_adapters": [
@@ -38,18 +37,18 @@
       "type": "vsphere-iso",
       "username": "srv_packer@vsphere.local",
       "vcenter_server": "vcenter",
-      "vm_name": "W10_TemplateBase",
+      "vm_name": "W10TempeBase",
       "winrm_password": "Start123!",
       "winrm_username": "virtuallabspl",
       "winrm_use_ssl": "false",
       "winrm_insecure": "true",
       "shutdown_timeout": "1h",
       "shutdown_command": "shutdown /s /t 60 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "boot_wait": "6m",
+      "boot_wait": "6m55s",
       "boot_command": [
-      "<down><wait1s>",
-      "<down><wait1s>",
-      "<enter><wait>"]
+      "<wait1s>","<enter><wait>","<wait2s>","<enter><wait>",
+      "<wait2s>","<enter><wait>","<wait2s>","<enter>"
+    ]
     }
   ],
   "provisioners": [
@@ -58,7 +57,7 @@
        "scripts": [
         "script/EnvConfigure.ps1"
       ]
-    } 
+    }   
   ]
 }
 

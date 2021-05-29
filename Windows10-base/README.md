@@ -1,9 +1,9 @@
 # Maintener
 Tomasz Gładkowski
 <br>
-virtuallabs.pl
+https://virtuallabs.pl
 <br>
-virtuallabs@gmail.com
+virtuallabspl@gmail.com
 <br>
 
 # Wersja Aktualizacji
@@ -44,7 +44,7 @@ Konfiguracja oparta na plikach .json
 
 
 # Uruchomienie
-Konsola PS w katalogu głównym "Windows10-advanced"
+Konsola PS w katalogu głównym "Windows10-base"
 <br>
 Uruchomienie skryptu .\Run.ps1
 <br>
