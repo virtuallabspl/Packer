@@ -3,7 +3,7 @@ Tomasz Gładkowski
 <br>
 https://virtuallabs.pl
 <br>
-virtuallabs@gmail.com
+virtuallabspl@gmail.com
 <br>
 
 # Opis

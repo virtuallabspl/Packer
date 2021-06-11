@@ -10,6 +10,7 @@ virtuallabspl@gmail.com
 Windows10-base
 
 * 1.0 - Podstawowy templejt dla Packera
+* 1.1 - Zmiana wersji OS Windows 10 na 21H1 oraz cała modyfikacja plików wspierających
 
 # Opis
 
@@ -25,7 +26,7 @@ Budowanie obrazu Virtualnej Maszyny za pomocą narzędzia "Packer" do automatyza
 # Windows 10 PRO Guest
 
 * OS Name:                   Microsoft Windows 10 Pro
-* OS Version:                10.0.10586 N/A Build 10586
+* OS Version:                10.0.19043 N/A Build 19043 (21H1)
 * OS Manufacturer:           Microsoft Corporation
 * OS Configuration:          Standalone Workstation
 

@@ -51,8 +51,8 @@
             </ImageInstall>
             <UserData>
                 <ProductKey>
-                <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
-                <WillShowUI>Never</WillShowUI>
+                    <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+                    <WillShowUI>Never</WillShowUI>
                 </ProductKey>
                 <AcceptEula>true</AcceptEula>
                 <FullName>virtuallabspl</FullName>
@@ -75,6 +75,8 @@
                 <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
                 <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
                 <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+                <SkipUserOOBE>true</SkipUserOOBE>
+                <SkipMachineOOBE>true</SkipMachineOOBE>
             </OOBE>
             <UserAccounts>
                 <AdministratorPassword>
@@ -104,20 +106,27 @@
             </AutoLogon>
             <TimeZone>Central European Standard Time</TimeZone>
             <FirstLogonCommands>
-  <SynchronousCommand wcm:action="add">
-    <Order>1</Order>
-    <CommandLine>e:\setup64.exe /S /v"/qn REBOOT=R</CommandLine>
-  </SynchronousCommand>
-    <SynchronousCommand wcm:action="add">
-    <Order>2</Order>
-    <CommandLine>powershell.exe Set-ExecutionPolicy Unrestricted -force</CommandLine>
-  </SynchronousCommand>              
-  <SynchronousCommand wcm:action="add">
-    <Order>3</Order>
-    <CommandLine>powershell -ExecutionPolicy Bypass -File a:\Config_WinRM.ps1</CommandLine>
-  </SynchronousCommand>
-   </FirstLogonCommands> 
-         </component>
+                <SynchronousCommand wcm:action="add">
+                    <Order>1</Order>
+                    <CommandLine>e:\setup64.exe /S /v "/qn ADDLOCAL=ALL"</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Order>2</Order>
+                    <CommandLine>powershell.exe Set-ExecutionPolicy Unrestricted -force</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Order>3</Order>
+                    <CommandLine>powershell -ExecutionPolicy Bypass -File a:\Config_WinRM.ps1</CommandLine>
+                </SynchronousCommand>
+            </FirstLogonCommands>
+        </component>
+        <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <UILanguage>en-US</UILanguage>
+            <SystemLocale>en-US</SystemLocale>
+            <UILanguageFallback>en-US</UILanguageFallback>
+            <UserLocale>en-US</UserLocale>
+            <InputLocale>0409:00000409</InputLocale>
+        </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim://pc/iso/windowsadk/windows10/install.wim#Windows 10 Pro Technical Preview" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim://tgvivo/iso/windowsadk/windows10_v2/install.wim#Windows 10 Pro" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
