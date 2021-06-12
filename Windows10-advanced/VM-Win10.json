@@ -13,13 +13,14 @@
       "floppy_files": [
         "Autounattend.xml",
         "script\\EnvConfigure.ps1",
+        "script\\Set-IP-Address.ps1",
         "script\\Config_WinRM.ps1",
         "script\\Install_Modules.ps1"
       ],
       "guest_os_type": "windows9_64Guest",
       "insecure_connection": "true",
       "iso_paths": [
-        "[Kingston] IsoSSD/Windows10pro.iso",
+        "[Kingston] IsoSSD/Win10/Windows10MC.iso",
         "[] /vmimages/tools-isoimages/windows.iso"
       ],
       "network_adapters": [
@@ -46,12 +47,7 @@
       "winrm_use_ssl": "false",
       "winrm_insecure": "true",
       "shutdown_timeout": "1h",
-      "shutdown_command": "shutdown /s /t 60 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "boot_wait": "6m",
-      "boot_command": [
-      "<down><wait1s>",
-      "<down><wait1s>",
-      "<enter><wait>"]
+      "shutdown_command": "shutdown /s /t 60 /f /d p:4:1 /c \"Zakonczenie dzialanie Packera - PowerOff\""
     }
   ],
   "provisioners": [

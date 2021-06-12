@@ -1,5 +1,5 @@
 {
-    "vmware_Name":"Win10_TemplateAdv",
+    "vmware_Name":"W10TmplAdv",
     "vmware_vcenter":"vcenter",
     "vmware_datastore": "Kingston",
     "vmware_datacenter": "DCMyLab",
